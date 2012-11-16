@@ -1,32 +1,32 @@
-var SortedArray = require("../lib/SortedArray");
+var SortedArrayMap = require("../lib/SortedArrayMap");
 var assert = require("assert");
 
-suite("SortedArray", function() {
+suite("SortedArrayMapMap", function() {
 
 	suite("position with floor == false", function() {
 
 		test("with 3 elements - one", function() {
 
 			var a = [10, 20, 30];
-			assert.equal(2, SortedArray.position(23, a));
+			assert.equal(2, SortedArrayMap.position(23, a));
 		});
 
 		test("with 3 elements - two", function() {
 
 			var a = [10, 20, 30];
-			assert.equal(1, SortedArray.position(13, a));
+			assert.equal(1, SortedArrayMap.position(13, a));
 		});
 
 		test("with 3 elements - exact match", function() {
 
 			var a = [10, 20, 30];
-			assert.equal(2, SortedArray.position(30, a));
+			assert.equal(2, SortedArrayMap.position(30, a));
 		});
 
 		test("with 10 elements - one", function() {
 
 			var a = [1, 2, 3, 5, 7, 8, 23, 45, 56, 100];
-			assert.equal(6, SortedArray.position(21, a));
+			assert.equal(6, SortedArrayMap.position(21, a));
 		});
 	});
 
@@ -35,43 +35,43 @@ suite("SortedArray", function() {
 		test("with 2 elements - one", function() {
 
 			var a = [10, 20, 30, 40, 50, 60, 70];
-			assert.equal(0, SortedArray.position(18, a, true));
+			assert.equal(0, SortedArrayMap.position(18, a, true));
 		});
 
 		test("with 3 elements - one", function() {
 
 			var a = [1, 4, 7, 10];
-			assert.equal(2, SortedArray.position(8, a, true));
+			assert.equal(2, SortedArrayMap.position(8, a, true));
 		});
 
 		test("empty array", function() {
 
 			var a = [];
-			assert.equal(0, SortedArray.position(23, a, true));
+			assert.equal(0, SortedArrayMap.position(23, a, true));
 		});
 
 		test("with 3 elements - one", function() {
 
 			var a = [10, 20, 30];
-			assert.equal(1, SortedArray.position(23, a, true));
+			assert.equal(1, SortedArrayMap.position(23, a, true));
 		});
 
 		test("with 3 elements - two", function() {
 
 			var a = [10, 20, 30];
-			assert.equal(0, SortedArray.position(13, a, true));
+			assert.equal(0, SortedArrayMap.position(13, a, true));
 		});
 
 		test("with 3 elements - exact match", function() {
 
 			var a = [10, 20, 30];
-			assert.equal(1, SortedArray.position(30, a, true));
+			assert.equal(1, SortedArrayMap.position(30, a, true));
 		});
 
 		test("with 10 elements - one", function() {
 
 			var a = [1, 2, 3, 5, 7, 8, 23, 45, 56, 100];
-			assert.equal(2, SortedArray.position(4, a, true));
+			assert.equal(2, SortedArrayMap.position(4, a, true));
 		});
 	});
 
@@ -80,16 +80,16 @@ suite("SortedArray", function() {
 
 		test("sorted array of 5", function() {
 
-			var sa = new SortedArray();
+			var sa = new SortedArrayMap();
 			for(var i=0; i<5; i++) {
-				sa.insert(Math.ceil(Math.random() * 1000));
+				sa.put(Math.ceil(Math.random() * 1000), "val");
 			}
 
 			var old = -1;
 			for(var i=0; i<sa.count(); i++) {
 				
-				assert.ok(old <= sa.get(i));
-				old = sa.get(i);
+				assert.ok(old <= sa.getKey(i));
+				old = sa.getKey(i);
 			}
 		});
 	});
